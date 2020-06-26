@@ -2,10 +2,12 @@ package com.ispdatabase.framwork.pages.studentsPage.mainNavBar.emergencyCust;
 
 import com.ispdatabase.framwork.driverManager.DriverManager;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ECPMainContactInfoPage extends EmergencyCustodianPage{
@@ -74,6 +76,7 @@ public class ECPMainContactInfoPage extends EmergencyCustodianPage{
 
     public ECPMainContactInfoPage enterContactName(String contactName) throws InterruptedException {
         Thread.sleep(1000);
+        wait.until(ExpectedConditions.elementToBeClickable(this.contactName));
         this.contactName.sendKeys(contactName.trim());
         return this;
     }
@@ -114,7 +117,7 @@ public class ECPMainContactInfoPage extends EmergencyCustodianPage{
     }
 
     public ECPMainContactInfoPage selectCountry(String country){
-        this.country.sendKeys(country);
+        this.country.sendKeys(country+ Keys.ENTER);
         return this;
     }
 
@@ -148,9 +151,9 @@ public class ECPMainContactInfoPage extends EmergencyCustodianPage{
         return this;
     }
 
-    public EmailToCustodianPage clickOnQuickEmailBtn(){
+    public QuickEmailToCustodianPage clickOnQuickEmailBtn(){
         this.quickEmailBtn.click();
-        return new EmailToCustodianPage(driverInstance);
+        return new QuickEmailToCustodianPage(driverInstance);
     }
 
 
